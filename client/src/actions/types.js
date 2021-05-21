@@ -1,0 +1,16 @@
+export const SIGN_UP = "SIGN_UP";
+export const SIGN_UP_FAIL = "SIGN_UP_FAIL";
+export const LOG_IN = "LOG_IN";
+export const LOG_IN_FAIL = "LOG_IN_FAIL";
+export const MY_ACCOUNT = "MY_ACCOUNT";
+export const MY_ACCOUNT_FAIL = "MY_ACCOUNT_FAIL";
+export const LOG_OUT = "LOG_OUT";
+export const LOG_OUT_FAIL = "LOG_OUT_FAIL";
+export const CREATE_PROFILE = "CREATE_PROFILE";
+export const CREATE_PROFILE_ERROR = "CREATE_PROFILE_ERROR";
+export const CREATE_EXPIRENCE = "CREATE_EXPIRENCE";
+export const CREATE_EXPIRENCE_ERROR = "CREATE_EXPIRENCE_ERROR";
+export const CREATE_EDUCATION = "CREATTE_EDUCATION";
+export const CREATE_EDUCATION_ERROR = "CREATTE_EDUCATION_ERROR";
+export const MY_PROFILE = "MY_PROFILE";
+export const MY_PROFILE_ERROR = "MY_PROFILE_ERROR";
