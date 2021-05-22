@@ -13,9 +13,6 @@ import {
 
 const INTIAL_VALUES = {
   profile: null,
-  expirence: [],
-  education: [],
-  profiles: [],
   loading: true,
   error: null,
 };
@@ -43,7 +40,7 @@ export default (state = INTIAL_VALUES, action) => {
     case MY_PROFILE:
       return {
         ...state,
-        profile: action.payload,
+        profile: action.payload.data.profile,
         loading: false,
       };
     case CREATE_PROFILE_ERROR:

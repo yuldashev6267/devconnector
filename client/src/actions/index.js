@@ -17,6 +17,10 @@ import {
   CREATE_EDUCATION_ERROR,
   MY_PROFILE,
   MY_PROFILE_ERROR,
+  DELETE_EDUCATION,
+  DELETE_EDUCATION_ERROR,
+  DELETE_EXPIRENCE,
+  DELETE_EXPIRENCE_ERROR,
 } from "./types";
 
 export const myAccount = () => async (dispatch) => {
@@ -160,6 +164,45 @@ export const createEducation = (values) => async (dispatch) => {
     dispatch({ type: CREATE_EDUCATION_ERROR, payload: error.response.data });
     setTimeout(() => {
       dispatch({ type: CREATE_EDUCATION_ERROR, payload: null });
+    }, 5000);
+  }
+};
+
+export const deleteEducation = (id) => async (dispatch) => {
+  try {
+    const response = await instance.delete(`/profile/delete-education/${id}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    dispatch({ type: DELETE_EDUCATION, payload: response.data });
+    history.push("/dashboard");
+  } catch (error) {
+    dispatch({ type: DELETE_EDUCATION_ERROR, payload: error.response.data });
+    setTimeout(() => {
+      dispatch({
+        type: DELETE_EDUCATION_ERROR,
+        payload: null,
+      });
+    }, 5000);
+  }
+};
+export const deleteExpirence = (id) => async (dispatch) => {
+  try {
+    const response = await instance.delete(`/profile/delete-expirence/${id}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    dispatch({ type: DELETE_EXPIRENCE, payload: response.data });
+    history.push("/dashboard");
+  } catch (error) {
+    dispatch({ type: DELETE_EXPIRENCE_ERROR, payload: error.response.data });
+    setTimeout(() => {
+      dispatch({
+        type: DELETE_EXPIRENCE_ERROR,
+        payload: null,
+      });
     }, 5000);
   }
 };

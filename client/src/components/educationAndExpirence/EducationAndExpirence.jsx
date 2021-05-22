@@ -46,7 +46,7 @@ const EducationAndExpirence = (props) => {
   const classes = useStyles();
   const { handleSubmit, control, register } = useForm();
 
-  const [selectedDate, setDate] = useState(moment());
+  const [selectedDate, setDate] = useState(moment().format("YYYY-MM-DD"));
   const [inputValue, setInputValue] = useState(moment().format("YYYY-MM-DD"));
   const onDateChange = (date, value) => {
     setDate(date);
@@ -55,10 +55,8 @@ const EducationAndExpirence = (props) => {
 
   const onSubmit = (data) => {
     if (props.type === "Education") {
-      console.log("1");
       return props.createEducation(data);
     } else if (props.type === "Expirence") {
-      console.log("2");
       return props.createExpirence(data);
     }
   };
@@ -110,17 +108,18 @@ const EducationAndExpirence = (props) => {
         <Typography variant="p">From Date</Typography>
         <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
           <Controller
-            as={KeyboardDatePicker}
+            as={TextField}
             defaultValue=""
             control={control}
             name="from"
-            autoOk={true}
-            showTodayButton={true}
+            id="date"
+            type="date"
+            defaultValue=""
             value={selectedDate}
-            format="YYYY-MM-DD"
             inputValue={inputValue}
-            onChange={onDateChange}
-            rifmFormatter={dateFormatter}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </MuiPickersUtilsProvider>
         <FormControlLabel
@@ -133,17 +132,18 @@ const EducationAndExpirence = (props) => {
         <Typography variant="p">To Date</Typography>
         <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
           <Controller
-            as={KeyboardDatePicker}
+            as={TextField}
             defaultValue=""
             control={control}
             name="to"
-            autoOk={true}
-            showTodayButton={true}
+            id="date"
+            type="date"
+            defaultValue=""
             value={selectedDate}
-            format="YYYY-MM-DD"
             inputValue={inputValue}
-            onChange={onDateChange}
-            rifmFormatter={dateFormatter}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
         </MuiPickersUtilsProvider>
         <Controller

@@ -22,6 +22,17 @@ router.post(
 
 router.route("/profiles").get(profileController.getAllProfiles);
 
+router.delete(
+  "/profile/delete-education/:edu_id",
+  authController.protectTo,
+  profileController.deleteEducation
+);
+router.delete(
+  "/profile/delete-expirence/:exp_id",
+  authController.protectTo,
+  profileController.deleteExpirence
+);
+
 router.get(
   "/profiles/me",
   authController.protectTo,

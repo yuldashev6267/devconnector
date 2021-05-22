@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment");
 const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -42,11 +43,11 @@ const profileSchema = new mongoose.Schema({
         type: String,
       },
       from: {
-        type: Date,
+        type: String,
         required: [true, "Please provide a start date"],
       },
       to: {
-        type: Date,
+        type: String,
         required: [true, "Please provide finishing date"],
       },
       current: {
@@ -73,11 +74,11 @@ const profileSchema = new mongoose.Schema({
         required: [true, "Please provide a field of study"],
       },
       from: {
-        type: Date,
+        type: String,
         required: [true, "Please provide a from"],
       },
       to: {
-        type: Date,
+        type: String,
       },
       current: {
         type: Boolean,

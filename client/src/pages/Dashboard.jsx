@@ -6,10 +6,13 @@ import { Typography, Button } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import DashboardAction from "../components/dashboardAction";
 import Spinner from "../components/spiner/Spinner";
+import CreateTwoToneIcon from "@material-ui/icons/CreateTwoTone";
+import EducationAndExpirenceTable from "../components/EducationAndExpirenceTable/EducationAndExpirenceTable";
 const Dashboard = ({
   registerMe: { user, isLoading, token },
   myAccount,
   myProfile,
+  profile,
   registerMe,
 }) => {
   useEffect(() => {
@@ -45,16 +48,32 @@ const Dashboard = ({
       <Button
         component={Link}
         to="/createprofile"
-        variant="contained"
-        size="small"
-        style={{ backgroundColor: "#32DE8A", margin: "1rem 0 0 2rem" }}
+        variant="outlined"
+        size="medium"
+        style={{ margin: "1rem 0 0 2rem" }}
       >
+        <CreateTwoToneIcon color="primary" size="medium" />
         Create Profile
       </Button>
+      <EducationAndExpirenceTable
+        typoTitle="Expirence Credentials"
+        profile={profile}
+        name="Company"
+        title="Title"
+        years="Years"
+      />
+      <EducationAndExpirenceTable
+        typoTitle="Education Credentials"
+        type="Education"
+        profile={profile}
+        name="School"
+        title="Degree"
+        years="Years"
+      />
     </>
   );
 };
 const mapStateToProps = (state) => {
-  return { registerMe: state.registerMe };
+  return { registerMe: state.registerMe, profile: state.userProfile };
 };
 export default connect(mapStateToProps, { myAccount, myProfile })(Dashboard);

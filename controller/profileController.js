@@ -65,6 +65,7 @@ exports.addEducation = async (req, res) => {
   try {
     const { school, degree, fieldofstudy, from, to, current, decription } =
       req.body;
+
     const newEducation = {
       school,
       degree,
@@ -131,6 +132,47 @@ exports.getAllProfiles = async (req, res) => {
       data: {
         profiles,
       },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: error.message,
+      stack: error.stack,
+    });
+  }
+};
+
+exports.deleteEducation = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const removeIndex = profile.education
+      .map((el) => el.id)
+      .indexOf(req.params.edu_id);
+    profile.education.splice(removeIndex, 1);
+    await profile.save();
+    res.status(200).json({
+      status: "success",
+      message: "deleted",
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: error.message,
+      stack: error.stack,
+    });
+  }
+};
+exports.deleteExpirence = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    const removeIndex = profile.expirence
+      .map((el) => el.id)
+      .indexOf(req.params.exp_id);
+    profile.expirence.splice(removeIndex, 1);
+    await profile.save();
+    res.status(200).json({
+      status: "success",
+      message: "deleted",
     });
   } catch (error) {
     res.status(500).json({

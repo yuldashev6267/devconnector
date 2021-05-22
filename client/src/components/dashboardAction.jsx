@@ -6,19 +6,28 @@ import AccountCircleRoundedIcon from "@material-ui/icons/AccountCircleRounded";
 import SchoolIcon from "@material-ui/icons/School";
 import WorkIcon from "@material-ui/icons/Work";
 const DashboardAction = (props) => {
-  const len = props.profile.profile.data.profile.length === 0 ? true : false;
   return (
     <div style={{ margin: "1rem 0 0 2rem" }}>
-      <Link to="/edit-profile" component={Button} disabled={len}>
-        <AccountCircleRoundedIcon />
+      <Link
+        to="/edit-profile"
+        component={Button}
+        variant="outlined"
+        style={{ marginRight: "4px" }}
+      >
+        <AccountCircleRoundedIcon color="primary" />
         Edit Profile
       </Link>
-      <Link to="/add-expirence" component={Button} disabled={len}>
-        <WorkIcon />
+      <Link
+        to="/add-expirence"
+        component={Button}
+        variant="outlined"
+        style={{ marginRight: "4px" }}
+      >
+        <WorkIcon color="primary" />
         Add Expirence
       </Link>
-      <Link to="/add-education" component={Button} disabled={len}>
-        <SchoolIcon />
+      <Link to="/add-education" component={Button} variant="outlined">
+        <SchoolIcon color="primary" />
         Add Education
       </Link>
     </div>
