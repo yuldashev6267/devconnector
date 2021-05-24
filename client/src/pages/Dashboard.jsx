@@ -43,33 +43,41 @@ const Dashboard = ({
           <span style={{ color: "#32DE8A" }}>{user.data.user.name}</span>
         </Typography>
       </div>
-
-      <DashboardAction></DashboardAction>
-      <Button
-        component={Link}
-        to="/createprofile"
-        variant="outlined"
-        size="medium"
-        style={{ margin: "1rem 0 0 2rem" }}
-      >
-        <CreateTwoToneIcon color="primary" size="medium" />
-        Create Profile
-      </Button>
-      <EducationAndExpirenceTable
-        typoTitle="Expirence Credentials"
-        profile={profile}
-        name="Company"
-        title="Title"
-        years="Years"
-      />
-      <EducationAndExpirenceTable
-        typoTitle="Education Credentials"
-        type="Education"
-        profile={profile}
-        name="School"
-        title="Degree"
-        years="Years"
-      />
+      {!profile.profile?.length ? (
+        <div style={{ margin: "1rem 0 0 2rem" }}>
+          <Typography>
+            You have not yet set up a profile,please add some info
+          </Typography>
+          <Button
+            component={Link}
+            to="/createprofile"
+            variant="outlined"
+            size="medium"
+          >
+            <CreateTwoToneIcon color="primary" size="medium" />
+            Create Profile
+          </Button>
+        </div>
+      ) : (
+        <>
+          <DashboardAction></DashboardAction>
+          <EducationAndExpirenceTable
+            typoTitle="Expirence Credentials"
+            profile={profile}
+            name="Company"
+            title="Title"
+            years="Years"
+          />
+          <EducationAndExpirenceTable
+            typoTitle="Education Credentials"
+            type="Education"
+            profile={profile}
+            name="School"
+            title="Degree"
+            years="Years"
+          />
+        </>
+      )}
     </>
   );
 };

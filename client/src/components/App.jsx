@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import CreateProfile from "../pages/CreateProfile";
 import AddEducation from "../pages/AddEducation";
 import AddExpirence from "../pages/AddExpirence";
+import Profiles from "../pages/Profiles";
 import Navigation from "./Navigation";
 import ProtectedRouter from "./ProtectedRouter";
 
@@ -32,8 +33,9 @@ const App = () => {
         <Route path="/signin" exact>
           <Signin />
         </Route>
-        <Route path="/dashboard" exact>
-          <Dashboard />
+        <ProtectedRouter path="/dashboard" component={Dashboard} exact />
+        <Route path="/developers">
+          <Profiles />
         </Route>
         <Route path="/" exact>
           <FirstPage />

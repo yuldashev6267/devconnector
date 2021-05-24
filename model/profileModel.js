@@ -48,7 +48,6 @@ const profileSchema = new mongoose.Schema({
       },
       to: {
         type: String,
-        required: [true, "Please provide finishing date"],
       },
       current: {
         type: Boolean,

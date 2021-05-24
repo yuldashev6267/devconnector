@@ -85,7 +85,7 @@ const EducationAndExpirenceTable = (props) => {
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {props.type === "Education"
-                    ? `From ${row.from} To ${row.current ? "Now" : row.to}`
+                    ? `From +${row.from} To ${row.current ? "Now" : row.to}`
                     : `From ${row.from} To ${row.current ? "Now" : row.to}`}
                 </StyledTableCell>
 
